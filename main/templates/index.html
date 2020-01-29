@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body>
+
+  <h1>Add an Item</h1>
+  <form action='/additem' method='post'>
+        {% csrf_token %}
+
+    title: <input type='text' name='title'>{{items.title}} <br>
+    price: <input type='text' name='price'>{{items.price}} <br>
+    description: <br>
+    <textarea rows="4" cols="50" name="description" >
+      {{items.description}}</textarea> <br>
+      <select name="category" id="">
+        <option></option>
+
+        <option value=""></option>
+
+      </select>
+      
+
+    <button type='submit'>add<button> <br>
+
+
+  </form>
+  <br>
+  
+  <ul>
+    {% for i in items%}
+    <li>{{i.title}}</li>
+    {% endfor %}
+  </ul>
+</body>
+{% endblock content %}
